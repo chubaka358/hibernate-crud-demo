@@ -20,4 +20,9 @@ public class ConsoleHelper {
 		System.out.println(output);
 	}
 
+	public static void waitForInput() throws IOException {
+		ConsoleHelper.write("\n\nEnter any symbol to continue..");
+		ConsoleHelper.read();
+	}
+
 }

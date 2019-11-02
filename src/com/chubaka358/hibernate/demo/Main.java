@@ -31,9 +31,9 @@ public class Main {
 				} else if (n == 2) {
 					ReadEmployees.readEmployee();
 				} else if (n == 3) {
-
+					ReadEmployees.findByCompany();
 				} else if (n == 4) {
-
+					DeleteEmployee.deleteEmployee();
 				} else if (n == 5) {
 					isExit = true;
 					ConsoleHelper.close();

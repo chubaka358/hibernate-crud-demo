@@ -34,8 +34,7 @@ public class CreateEmployee {
 
 		ConsoleHelper.write("Employee added");
 
-		ConsoleHelper.write("\n\nEnter any symbol to continue..");
-		ConsoleHelper.read();
+		ConsoleHelper.waitForInput();
 
 	}
 }
