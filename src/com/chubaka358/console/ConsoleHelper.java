@@ -12,4 +12,12 @@ public class ConsoleHelper {
 		return reader.readLine();
 	}
 
+	public static void close() throws IOException {
+		reader.close();
+	}
+
+	public static void write(Object output){
+		System.out.println(output);
+	}
+
 }

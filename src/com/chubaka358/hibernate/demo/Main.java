@@ -1,10 +1,9 @@
 package com.chubaka358.hibernate.demo;
 
 import com.chubaka358.console.ConsoleHelper;
+import com.chubaka358.session.SessionHelper;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Main {
 	
@@ -13,33 +12,36 @@ public class Main {
 		boolean isExit = false;
 
 		while (!isExit) {
-			System.out.println("\n\n\n\n\n\n\n");
-			System.out.println("1. Save an employee.");
-			System.out.println("2. Retrieve an employee by primary key.");
-			System.out.println("3. Find an employee for a given company.");
-			System.out.println("4. Delete an employee by primary key");
-			System.out.println("5. Exit");
+			ConsoleHelper.write("\n\n\n\n\n\n\n");
+			ConsoleHelper.write("1. Save an employee.");
+			ConsoleHelper.write("2. Retrieve an employee by primary key.");
+			ConsoleHelper.write("3. Find an employee for a given company.");
+			ConsoleHelper.write("4. Delete an employee by primary key");
+			ConsoleHelper.write("5. Exit");
 			String line = ConsoleHelper.read();
 			try {
 
 				int n = Integer.parseInt(line);
 
 				if (n <= 0 || n >= 6)
-					System.out.println("Enter a number from 1 to 5");
+					ConsoleHelper.write("Enter a number from 1 to 5");
 
 				if (n == 1) {
 					CreateEmployee.createEmployee();
 				} else if (n == 2) {
-
+					ReadEmployees.readEmployee();
 				} else if (n == 3) {
 
 				} else if (n == 4) {
 
 				} else if (n == 5) {
 					isExit = true;
+					ConsoleHelper.close();
+					SessionHelper.close();
 				}
 			} catch (Exception e){
-				System.out.println("Incorrect input");
+				e.printStackTrace();
+				ConsoleHelper.write("Incorrect input");
 			}
 		}
 	}

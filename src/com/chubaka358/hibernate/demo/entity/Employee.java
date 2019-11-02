@@ -25,6 +25,9 @@ public class Employee {
 	@Column(name="company")
 	private String company;
 
+	public Employee() {
+	}
+
 	public Employee(String firstName, String lastName, String company) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -68,7 +71,5 @@ public class Employee {
 		return String.format("Employee [id=%s, firstName=%s, lastName=%s, company=%s]", id, firstName, lastName,
 				company);
 	}
-	
-	
 
 }

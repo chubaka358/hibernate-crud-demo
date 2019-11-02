@@ -2,6 +2,7 @@ package com.chubaka358.hibernate.demo;
 
 import com.chubaka358.console.ConsoleHelper;
 import com.chubaka358.hibernate.demo.entity.Employee;
+import com.chubaka358.session.SessionHelper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,33 +15,27 @@ public class CreateEmployee {
 
 	public static void createEmployee() throws IOException {
 
-		try (SessionFactory factory = new Configuration()
-				.configure("hibernate.cfg.xml")
-				.addAnnotatedClass(Employee.class)
-				.buildSessionFactory())
-		{
+		Session session = SessionHelper.getCurrentSession();
 
-			Session session = factory.getCurrentSession();
+		ConsoleHelper.write("Enter first name");
+		String firstName = ConsoleHelper.read();
 
-			System.out.println("Enter first name");
-			String firstName = ConsoleHelper.read();
+		ConsoleHelper.write("Enter last name");
+		String lastName = ConsoleHelper.read();
 
-			System.out.println("Enter last name");
-			String lastName = ConsoleHelper.read();
+		ConsoleHelper.write("Enter company");
+		String company = ConsoleHelper.read();
 
-			System.out.println("Enter company");
-			String company = ConsoleHelper.read();
+		Employee employee = new Employee(firstName, lastName, company);
 
-			Employee employee = new Employee(firstName, lastName, company);
+		session.beginTransaction();
+		session.save(employee);
+		session.getTransaction().commit();
 
-			session.beginTransaction();
-			session.save(employee);
-			session.getTransaction().commit();
+		ConsoleHelper.write("Employee added");
 
-			System.out.println("Employee added");;
-
-		}
+		ConsoleHelper.write("\n\nEnter any symbol to continue..");
+		ConsoleHelper.read();
 
 	}
-
 }
